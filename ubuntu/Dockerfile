@@ -17,7 +17,7 @@
 
 FROM ubuntu:24.04
 
-ARG APISIX_VERSION=3.16.0
+ARG APISIX_VERSION=3.17.0
 
 RUN set -ex; \
     arch=$(dpkg --print-architecture); \
@@ -37,7 +37,7 @@ RUN set -ex; \
     apt update \
     && apt install -y apisix=${APISIX_VERSION}-0 \
     && apt-get purge -y --auto-remove \
-    && rm /usr/local/openresty/bin/etcdctl \
+    && rm -f /usr/local/openresty/bin/etcdctl \
     && openresty -V \
     && apisix version
 
